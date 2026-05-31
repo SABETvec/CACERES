@@ -348,13 +348,14 @@ onMounted(async () => {
 })
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import '@/style/globals.css';
 </style>
 <style scoped>
 
 .VistaRoles {
   padding: 32px;
   min-height: 100vh;
+  background-color: var(--bg-light);
 }
 
 .CabeceraVista {
@@ -366,115 +367,21 @@ onMounted(async () => {
 }
 
 .TituloVista {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 26px;
   font-weight: 700;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   margin-bottom: 4px;
 }
 
 .SubtituloVista {
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  color: #8a7d6b;
-  font-style: italic;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-text);
+  font-style: normal;
 }
 
-.BotonPrimario {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #c4912a 0%, #a87520 100%);
-  border: none;
-  border-radius: 6px;
-  color: #0f0e0b;
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.BotonPrimario:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(196, 145, 42, 0.3);
-}
-
-.BotonPrimario:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.BotonSecundario {
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid #3d3320;
-  border-radius: 6px;
-  color: #8a7d6b;
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.BotonSecundario:hover {
-  border-color: #c4912a;
-  color: #c4912a;
-}
-
-.ContenedorTabla {
-  background-color: #12100c;
-  border: 1px solid #2d2410;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.TablaEstilos {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.EncabezadoTabla {
-  padding: 14px 20px;
-  background-color: #1a1710;
-  font-family: 'Crimson Pro', serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #c4912a;
-  text-align: left;
-  border-bottom: 1px solid #2d2410;
-}
-
-.FilaTabla {
-  border-bottom: 1px solid #1f1c12;
-  transition: background-color 0.2s;
-}
-
-.FilaTabla:hover {
-  background-color: #1a1710;
-}
-
-.FilaTabla:last-child {
-  border-bottom: none;
-}
-
-.CeldaTabla {
-  padding: 16px 20px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  color: #f5f0e8;
-}
-
-.CeldaId {
-  color: #5a4e3c;
-  width: 60px;
-}
-
+/* Estilos específicos para Roles */
 .NombreRol {
   display: flex;
   align-items: center;
@@ -484,17 +391,14 @@ onMounted(async () => {
 .InsigniaRol {
   width: 28px;
   height: 28px;
-  background-color: rgba(196, 145, 42, 0.1);
-  border: 1px solid rgba(196, 145, 42, 0.2);
+  background-color: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.CeldaAcciones {
-  text-align: center;
+  color: var(--color-primary-light);
 }
 
 .BotonAccionTabla {
@@ -504,193 +408,31 @@ onMounted(async () => {
   padding: 7px 14px;
   border: 1px solid transparent;
   border-radius: 5px;
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
   margin: 0 3px;
 }
 
-.BotonEditar {
-  background-color: rgba(196, 145, 42, 0.1);
-  border-color: rgba(196, 145, 42, 0.3);
-  color: #c4912a;
+.BotonAccionTabla.BotonEditar {
+  background-color: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.3);
+  color: var(--color-primary-light);
 }
 
-.BotonEditar:hover {
-  background-color: rgba(196, 145, 42, 0.2);
+.BotonAccionTabla.BotonEditar:hover {
+  background-color: rgba(14, 165, 233, 0.2);
 }
 
-.BotonEliminar {
+.BotonAccionTabla.BotonEliminar {
   background-color: rgba(220, 60, 60, 0.1);
   border-color: rgba(220, 60, 60, 0.3);
-  color: #e87c7c;
+  color: var(--color-error-light);
 }
 
-.BotonEliminar:hover {
+.BotonAccionTabla.BotonEliminar:hover {
   background-color: rgba(220, 60, 60, 0.2);
-}
-
-.FilaVacia {
-  padding: 40px;
-  text-align: center;
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  color: #5a4e3c;
-  font-style: italic;
-}
-
-.EstadoCargando {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 40px;
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  color: #8a7d6b;
-}
-
-.AnimadorCarga {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #2d2410;
-  border-top-color: #c4912a;
-  border-radius: 50%;
-  animation: Girar 0.8s linear infinite;
-}
-
-@keyframes Girar { to { transform: rotate(360deg); } }
-
-.OverlayModal {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.ContenedorModal {
-  background-color: #1a1710;
-  border: 1px solid #3d3320;
-  border-radius: 12px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.ContenedorModalGrande {
-  max-width: 900px;
-}
-
-.ContenedorModalPequeno {
-  max-width: 440px;
-}
-
-.CabeceraModal {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid #2d2410;
-}
-
-.TituloModal {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 18px;
-  color: #f5f0e8;
-}
-
-.TituloModalPeligro {
-  color: #e87c7c;
-}
-
-.BotonCerrarModal {
-  background: none;
-  border: none;
-  color: #5a4e3c;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
-}
-
-.BotonCerrarModal:hover {
-  color: #f5f0e8;
-}
-
-.CuerpoModal {
-  padding: 24px;
-  flex: 1;
-}
-
-.FilaModal {
-  display: flex;
-  gap: 32px;
-}
-
-.ColumnaIzquierdaModal {
-  width: 240px;
-  flex-shrink: 0;
-}
-
-.ColumnaDerechaModal {
-  flex: 1;
-  min-width: 0;
-}
-
-.EtiquetaSeccionModal {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 14px;
-  color: #c4912a;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #2d2410;
-}
-
-.GrupoEntrada {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.EtiquetaCampo {
-  font-family: 'Crimson Pro', serif;
-  font-size: 12px;
-  color: #c4912a;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.CampoEntrada {
-  padding: 12px 14px;
-  background-color: #0f0e0b;
-  border: 1px solid #3d3320;
-  border-radius: 6px;
-  color: #f5f0e8;
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s;
-  width: 100%;
-}
-
-.CampoEntrada::placeholder {
-  color: #4a3f2e;
-}
-
-.CampoEntrada:focus {
-  border-color: #c4912a;
 }
 
 .ContenedorMatriz {
@@ -700,21 +442,21 @@ onMounted(async () => {
 .TablaMatriz {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #2d2410;
+  border: 1px solid #e2e8f0;
   border-radius: 6px;
   overflow: hidden;
 }
 
 .EncabezadoMatriz {
   padding: 12px 16px;
-  background-color: #0f0e0b;
-  font-family: 'Crimson Pro', serif;
+  background-color: #f8fafc;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #8a7d6b;
-  border-bottom: 1px solid #2d2410;
+  color: var(--color-primary-dark);
+  border-bottom: 1px solid #e2e8f0;
   white-space: nowrap;
 }
 
@@ -724,12 +466,12 @@ onMounted(async () => {
 }
 
 .FilaMatriz {
-  border-bottom: 1px solid #1f1c12;
+  border-bottom: 1px solid #f1f5f9;
   transition: background-color 0.2s;
 }
 
 .FilaMatriz:hover {
-  background-color: #1f1c12;
+  background-color: #f8fafc;
 }
 
 .FilaMatriz:last-child {
@@ -741,9 +483,9 @@ onMounted(async () => {
 }
 
 .CeldaNombreModulo {
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  color: #f5f0e8;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-dark);
   font-weight: 600;
 }
 
@@ -769,8 +511,8 @@ onMounted(async () => {
 .CheckboxPersonalizado {
   position: absolute;
   inset: 0;
-  background-color: #0f0e0b;
-  border: 2px solid #3d3320;
+  background-color: var(--color-white);
+  border: 2px solid #e2e8f0;
   border-radius: 4px;
   transition: all 0.2s;
   display: flex;
@@ -779,8 +521,8 @@ onMounted(async () => {
 }
 
 .InputCheckbox:checked + .CheckboxPersonalizado {
-  background-color: #c4912a;
-  border-color: #c4912a;
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
 }
 
 .InputCheckbox:checked + .CheckboxPersonalizado::after {
@@ -788,51 +530,10 @@ onMounted(async () => {
   position: absolute;
   width: 5px;
   height: 9px;
-  border: 2px solid #0f0e0b;
+  border: 2px solid var(--color-white);
   border-top: none;
   border-left: none;
   transform: rotate(45deg);
   top: 1px;
-}
-
-.PieModal {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 16px 24px;
-  border-top: 1px solid #2d2410;
-}
-
-.TextoConfirmacion {
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  color: #8a7d6b;
-  line-height: 1.6;
-}
-
-.TextoConfirmacion strong {
-  color: #f5f0e8;
-}
-
-.BotonEliminarModal {
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #c0392b, #a93226);
-  border: none;
-  border-radius: 6px;
-  color: #f5f0e8;
-  font-family: 'Crimson Pro', serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-.BotonEliminarModal:hover:not(:disabled) {
-  transform: translateY(-1px);
-}
-
-.BotonEliminarModal:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 </style>

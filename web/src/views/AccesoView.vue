@@ -165,25 +165,25 @@ const ManejarInicioSesion = async () => {
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import '@/style/globals.css';
 </style>
 <style scoped>
 
 .ContenedorPrincipal {
   display: flex;
   min-height: 100vh;
-  background-color: #0f0e0b;
+  background-color: var(--bg-light);
 }
 
 .PanelIzquierdo {
   flex: 1;
-  background: linear-gradient(135deg, #1a1408 0%, #2d2210 40%, #1a1408 100%);
+  background: linear-gradient(135deg, #f0f6ff 0%, #e0eeff 40%, #f0f6ff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border-right: 1px solid #3d2e0a;
+  border-right: 1px solid #cbd5e1;
 }
 
 .PanelIzquierdo::before {
@@ -241,7 +241,7 @@ const ManejarInicioSesion = async () => {
   font-family: 'Libre Baskerville', serif;
   font-size: 52px;
   font-weight: 700;
-  color: #c4912a;
+  color: var(--color-primary-light);
   opacity: 0.15;
   letter-spacing: 4px;
   display: inline-block;
@@ -264,7 +264,7 @@ const ManejarInicioSesion = async () => {
   font-family: 'Crimson Pro', serif;
   font-style: italic;
   font-size: 20px;
-  color: #c4912a;
+  color: var(--color-primary-light);
   opacity: 0.7;
   line-height: 1.6;
   max-width: 320px;
@@ -274,14 +274,14 @@ const ManejarInicioSesion = async () => {
 .LineaDecorativa {
   width: 60px;
   height: 1px;
-  background: linear-gradient(to right, transparent, #c4912a, transparent);
+  background: linear-gradient(to right, transparent, var(--color-primary-light), transparent);
   margin: 24px auto;
 }
 
 .DescripcionLibreria {
   font-family: 'Libre Baskerville', serif;
   font-size: 18px;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   opacity: 0.6;
   line-height: 1.8;
 }
@@ -289,14 +289,14 @@ const ManejarInicioSesion = async () => {
 .SubtituloLibreria {
   font-family: 'Crimson Pro', serif;
   font-size: 14px;
-  color: #c4912a;
+  color: var(--color-primary-light);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .PanelDerecho {
   width: 480px;
-  background-color: #0f0e0b;
+  background-color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -329,7 +329,7 @@ const ManejarInicioSesion = async () => {
   font-family: 'Libre Baskerville', serif;
   font-size: 32px;
   font-weight: 700;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   margin-bottom: 8px;
   letter-spacing: -0.5px;
 }
@@ -356,7 +356,7 @@ const ManejarInicioSesion = async () => {
 .EtiquetaCampo {
   font-family: 'Crimson Pro', serif;
   font-size: 13px;
-  color: #c4912a;
+  color: var(--color-primary-light);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -380,10 +380,10 @@ const ManejarInicioSesion = async () => {
 .CampoEntrada {
   width: 100%;
   padding: 14px 48px;
-  background-color: #1a1710;
-  border: 1px solid #3d3320;
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-gray-medium);
   border-radius: 6px;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   font-family: 'Crimson Pro', serif;
   font-size: 16px;
   outline: none;
@@ -391,11 +391,11 @@ const ManejarInicioSesion = async () => {
 }
 
 .CampoEntrada::placeholder {
-  color: #4a3f2e;
+  color: var(--color-gray-text);
 }
 
 .CampoEntrada:focus {
-  border-color: #c4912a;
+  border-color: var(--color-primary-light);
   background-color: #1f1c12;
 }
 
@@ -413,7 +413,7 @@ const ManejarInicioSesion = async () => {
 }
 
 .BotonVerContrasena:hover {
-  color: #c4912a;
+  color: var(--color-primary-light);
 }
 
 .AlertaError {
@@ -431,10 +431,10 @@ const ManejarInicioSesion = async () => {
 
 .BotonIngresar {
   padding: 16px;
-  background: linear-gradient(135deg, #c4912a 0%, #a87520 100%);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
   border: none;
   border-radius: 6px;
-  color: #0f0e0b;
+  color: var(--color-white);
   font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
@@ -468,7 +468,7 @@ const ManejarInicioSesion = async () => {
 .PuntoCarga {
   width: 8px;
   height: 8px;
-  background-color: #0f0e0b;
+  background-color: var(--color-white);
   border-radius: 50%;
   animation: PulsarPunto 1.2s ease-in-out infinite;
 }
@@ -495,7 +495,7 @@ const ManejarInicioSesion = async () => {
 }
 
 .EnlaceOlvideContrasena:hover {
-  color: #c4912a;
+  color: var(--color-primary-light);
 }
 
 .PieTarjeta {
@@ -503,7 +503,7 @@ const ManejarInicioSesion = async () => {
   margin-top: 40px;
   font-family: 'Crimson Pro', serif;
   font-size: 13px;
-  color: #3d3320;
+  color: var(--color-gray-medium);
   letter-spacing: 1px;
 }
 

@@ -1,0 +1,817 @@
+/* ========================================
+   IMPORTACIONES DE FUENTES
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+/* ========================================
+   VARIABLES DE COLOR - PALETA AZUL CELESTE
+   ======================================== */
+:root {
+  /* Colores Primarios */
+  --color-primary-dark: #0369a1;
+  --color-primary-light: #0ea5e9;
+  
+  /* Colores Neutrales */
+  --color-white: #ffffff;
+  --color-gray-light: #f0f6ff;
+  --color-gray-medium: #cbd5e1;
+  --color-gray-text: #64748b;
+  --color-gray-dark: #0f172a;
+  
+  /* Colores Adicionales */
+  --color-slate: #94a3b8;
+  --color-error: #dc3c3c;
+  --color-error-light: #e87c7c;
+  
+  /* Fondos */
+  --bg-light: #f0f6ff;
+  --bg-white: #ffffff;
+}
+
+/* ========================================
+   ESTILOS COMUNES - BOTONES
+   ======================================== */
+
+.BotonPrimario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
+  border: none;
+  border-radius: 8px;
+  color: var(--color-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(3, 105, 161, 0.35);
+}
+
+.BotonPrimario:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(3, 105, 161, 0.45);
+}
+
+.BotonPrimario:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.BotonSecundario {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--color-gray-medium);
+  border-radius: 8px;
+  color: var(--color-gray-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.BotonSecundario:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+
+.BotonIcono {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-text);
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.BotonIcono:hover {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-primary-light);
+}
+
+.BotonDetalle {
+  color: var(--color-primary-light);
+}
+
+.BotonEditar {
+  color: var(--color-primary-light);
+}
+
+.BotonDesactivar {
+  color: var(--color-error-light);
+}
+
+.BotonActivar {
+  color: var(--color-primary-light);
+}
+
+.BotonEliminar {
+  color: var(--color-error-light);
+}
+
+.BotonEliminarModal {
+  padding: 10px 20px;
+  background-color: var(--color-error);
+  border: none;
+  border-radius: 8px;
+  color: var(--color-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.BotonEliminarModal:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.BotonEliminarModal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.BotonCerrarModal {
+  background: none;
+  border: none;
+  color: var(--color-slate);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.BotonCerrarModal:hover {
+  color: var(--color-gray-dark);
+}
+
+/* ========================================
+   ESTILOS COMUNES - TABLAS
+   ======================================== */
+
+.ContenedorTabla {
+  background-color: var(--color-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.TablaEstilos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.EncabezadoTabla {
+  padding: 14px 20px;
+  background-color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.FilaTabla {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s;
+}
+
+.FilaTabla:hover {
+  background-color: #f8fafc;
+}
+
+.FilaTabla:last-child {
+  border-bottom: none;
+}
+
+.FilaVacia {
+  padding: 40px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--color-gray-text);
+}
+
+.CeldaTabla {
+  padding: 16px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+.CeldaAvatar {
+  width: 50px;
+}
+
+.CeldaSecundaria {
+  color: var(--color-gray-text);
+  font-size: 13px;
+}
+
+.CeldaTextoSecundario {
+  color: var(--color-gray-text);
+  font-size: 13px;
+}
+
+.CeldaUsername {
+  font-weight: 500;
+}
+
+.CeldaAcciones {
+  text-align: center;
+  padding: 16px 12px;
+}
+
+.NombreCompleto {
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+
+.ApellidoSecundario {
+  font-size: 12px;
+  color: var(--color-gray-text);
+  margin-top: 2px;
+}
+
+/* ========================================
+   ESTILOS COMUNES - AVATARES
+   ======================================== */
+
+.AvatarTabla {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.AvatarTabla img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.AvatarDetalle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: 600;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.AvatarDetalle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   ESTILOS COMUNES - INSIGNIAS
+   ======================================== */
+
+.InsigniaSaldo {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-primary-light);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.InsigniaEspecialidad {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-primary-light);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.InsigniaRol {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-primary-light);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.InsigniaEstado {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.InsigniaEstado--Activo {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.InsigniaEstado--Inactivo {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* ========================================
+   ESTILOS COMUNES - FORMULARIOS
+   ======================================== */
+
+.FilaFiltros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ContenedorBusqueda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-white);
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.EntradaBusqueda {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 6px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-dark);
+  outline: none;
+}
+
+.EntradaBusqueda::placeholder {
+  color: var(--color-gray-text);
+}
+
+.SelectorFiltro {
+  padding: 8px 12px;
+  background-color: var(--color-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: var(--color-gray-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.SelectorFiltro:focus {
+  border-color: var(--color-primary-light);
+}
+
+.GrupoEntrada {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.EtiquetaCampo {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--color-primary-dark);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.CampoEntrada {
+  padding: 12px 14px;
+  background-color: var(--color-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: var(--color-gray-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.CampoEntrada::placeholder {
+  color: var(--color-gray-text);
+}
+
+.CampoEntrada:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.CampoEntrada:disabled {
+  background-color: #f8fafc;
+  color: var(--color-gray-text);
+  cursor: not-allowed;
+}
+
+.CuadriculaFormulario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.GrupoEntradaCompleto {
+  grid-column: 1 / -1;
+}
+
+.GrupoEntradaContrasena {
+  grid-column: 1 / -1;
+}
+
+.ContenedorEntradaContrasena {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.BotonVerContrasena {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--color-gray-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.BotonVerContrasena:hover {
+  color: var(--color-primary-light);
+}
+
+/* ========================================
+   ESTILOS COMUNES - MODALES
+   ======================================== */
+
+.OverlayModal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ContenedorModal {
+  background-color: var(--color-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.ContenedorModalGrande {
+  max-width: 900px;
+}
+
+.ContenedorModalPequeno {
+  max-width: 440px;
+}
+
+.CabeceraModal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.TituloModal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-gray-dark);
+}
+
+.TituloModalPeligro {
+  color: var(--color-error-light);
+}
+
+.CuerpoModal {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.PieModal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.FilaModalFormulario {
+  display: flex;
+  gap: 24px;
+}
+
+.ColumnaFotoModal {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.ColumnaDatosModal {
+  flex: 1;
+}
+
+.FilaModal {
+  display: flex;
+  gap: 32px;
+}
+
+.ColumnaIzquierdaModal {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.ColumnaDerechaModal {
+  flex: 1;
+  min-width: 0;
+}
+
+.EtiquetaSeccionModal {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+  font-weight: 700;
+}
+
+.ContenedorFoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.VistasPreviaFoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
+}
+
+.VistasPreviaFoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.PlaceholderFoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-text);
+}
+
+.BotonSeleccionarFoto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: rgba(14, 165, 233, 0.1);
+  border: 1px solid var(--color-primary-light);
+  border-radius: 6px;
+  color: var(--color-primary-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.BotonSeleccionarFoto:hover {
+  background-color: rgba(14, 165, 233, 0.2);
+}
+
+.SeparadorSeccion {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 20px 0;
+}
+
+.SeparadorDetalle {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 16px 0;
+}
+
+/* ========================================
+   ESTILOS COMUNES - DETALLES
+   ======================================== */
+
+.CabeceraPerfil {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.InfoDetallePerfil {
+  flex: 1;
+}
+
+.NombreDetalle {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  margin-bottom: 4px;
+}
+
+.UsernameDetalle {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-text);
+  margin-bottom: 8px;
+}
+
+.SaldoDestacado {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-light);
+}
+
+.CuadriculaDetalle {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.ItemDetalle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ItemDetalleCompleto {
+  grid-column: 1 / -1;
+}
+
+.EtiquetaDetalle {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--color-primary-dark);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ValorDetalle {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+/* ========================================
+   ESTILOS COMUNES - ESTADOS
+   ======================================== */
+
+.EstadoCargando {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--color-gray-text);
+}
+
+.AnimadorCarga {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e2e8f0;
+  border-top-color: var(--color-primary-light);
+  border-radius: 50%;
+  animation: Girar 0.8s linear infinite;
+}
+
+@keyframes Girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   ESTILOS COMUNES - ALERTAS
+   ======================================== */
+
+.AlertaError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: rgba(220, 60, 60, 0.1);
+  border: 1px solid rgba(220, 60, 60, 0.3);
+  border-radius: 6px;
+  color: var(--color-error-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.TextoConfirmacion {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+/* ========================================
+   ESTILOS COMUNES - VISTAS
+   ======================================== */
+
+.TituloVista {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  margin-bottom: 4px;
+}
+
+.SubtituloVista {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-text);
+}
+
+.CabeceraVista {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .FilaModalFormulario {
+    flex-direction: column;
+  }
+  
+  .ColumnaDatosModal {
+    width: 100%;
+  }
+  
+  .CuadriculaFormulario {
+    grid-template-columns: 1fr;
+  }
+}

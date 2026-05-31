@@ -88,13 +88,13 @@ const ManejarRecuperacion = async () => {
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import '@/style/globals.css';
 </style>
 <style scoped>
 
 .ContenedorRecuperacion {
   min-height: 100vh;
-  background-color: #0f0e0b;
+  background-color: var(--bg-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,8 +104,8 @@ const ManejarRecuperacion = async () => {
 .TarjetaRecuperacion {
   width: 100%;
   max-width: 440px;
-  background-color: #1a1710;
-  border: 1px solid #3d3320;
+  background-color: var(--bg-white);
+  border: 1px solid var(--color-gray-medium);
   border-radius: 12px;
   padding: 40px;
 }
@@ -114,31 +114,31 @@ const ManejarRecuperacion = async () => {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #8a7d6b;
-  font-family: 'Crimson Pro', serif;
+  color: var(--color-gray-text);
+  font-family: 'Inter', serif;
   font-size: 15px;
   text-decoration: none;
   margin-bottom: 32px;
   transition: color 0.2s;
 }
 
-.BotonRegresar:hover { color: #c4912a; }
+.BotonRegresar:hover { color: var(--color-primary-light); }
 
 .CabeceraSeccion { text-align: center; margin-bottom: 32px; }
 
 .IconoSeccion { font-size: 40px; margin-bottom: 16px; display: block; }
 
 .TituloSeccion {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 26px;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   margin-bottom: 12px;
 }
 
 .DescripcionSeccion {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', serif;
   font-size: 16px;
-  color: #8a7d6b;
+  color: var(--color-gray-text);
   line-height: 1.6;
   font-style: italic;
 }
@@ -146,9 +146,9 @@ const ManejarRecuperacion = async () => {
 .GrupoEntrada { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
 
 .EtiquetaCampo {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', serif;
   font-size: 13px;
-  color: #c4912a;
+  color: var(--color-primary-light);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -158,7 +158,7 @@ const ManejarRecuperacion = async () => {
 .IconoCampo {
   position: absolute;
   left: 14px;
-  color: #5a4e3c;
+  color: var(--color-gray-text);
   display: flex;
   align-items: center;
   pointer-events: none;
@@ -168,17 +168,17 @@ const ManejarRecuperacion = async () => {
   width: 100%;
   padding: 14px 48px;
   background-color: #0f0e0b;
-  border: 1px solid #3d3320;
+  border: 1px solid var(--color-gray-medium);
   border-radius: 6px;
-  color: #f5f0e8;
-  font-family: 'Crimson Pro', serif;
+  color: var(--color-gray-dark);
+  font-family: 'Inter', serif;
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s;
 }
 
-.CampoEntrada::placeholder { color: #4a3f2e; }
-.CampoEntrada:focus { border-color: #c4912a; }
+.CampoEntrada::placeholder { color: var(--color-gray-text); }
+.CampoEntrada:focus { border-color: var(--color-primary-light); }
 
 .AlertaError {
   padding: 12px 16px;
@@ -186,7 +186,7 @@ const ManejarRecuperacion = async () => {
   border: 1px solid rgba(220, 60, 60, 0.3);
   border-radius: 6px;
   color: #e87c7c;
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', serif;
   font-size: 15px;
   margin-bottom: 16px;
 }
@@ -194,11 +194,11 @@ const ManejarRecuperacion = async () => {
 .BotonAccion {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #c4912a 0%, #a87520 100%);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
   border: none;
   border-radius: 6px;
   color: #0f0e0b;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
@@ -216,26 +216,26 @@ const ManejarRecuperacion = async () => {
 .IconoExito { font-size: 48px; margin-bottom: 16px; display: block; }
 
 .TituloExito {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 22px;
-  color: #f5f0e8;
+  color: var(--color-gray-dark);
   margin-bottom: 12px;
 }
 
 .DescripcionExito {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', serif;
   font-size: 16px;
-  color: #8a7d6b;
+  color: var(--color-gray-text);
   line-height: 1.6;
   margin-bottom: 12px;
 }
 
-.DescripcionExito strong { color: #c4912a; }
+.DescripcionExito strong { color: var(--color-primary-light); }
 
 .AdvertenciaExito {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Inter', serif;
   font-size: 14px;
-  color: #5a4e3c;
+  color: var(--color-gray-text);
   margin-bottom: 24px;
   font-style: italic;
 }
@@ -243,10 +243,10 @@ const ManejarRecuperacion = async () => {
 .EnlaceVolver {
   display: inline-block;
   padding: 12px 24px;
-  border: 1px solid #c4912a;
+  border: 1px solid var(--color-primary-light);
   border-radius: 6px;
-  color: #c4912a;
-  font-family: 'Crimson Pro', serif;
+  color: var(--color-primary-light);
+  font-family: 'Inter', serif;
   font-size: 15px;
   text-decoration: none;
   transition: background-color 0.2s;
