@@ -1,0 +1,229 @@
+CREATE TABLE Persona (
+  IdPersona SERIAL PRIMARY KEY,
+  Nombre VARCHAR(100),
+  ApellidoPaterno VARCHAR(100),
+  ApellidoMaterno VARCHAR(100),
+  Sexo CHAR(1),
+  FechaDeNacimiento DATE,
+  FechaCreacion TIMESTAMP,
+  FechaActualizacion TIMESTAMP,
+  FotoPerfil TEXT
+);
+
+CREATE TABLE Contacto (
+  IdContacto SERIAL PRIMARY KEY,
+  Email VARCHAR(150),
+  Celular VARCHAR(50),
+  IdPersona INT,
+  FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+CREATE TABLE Direccion (
+  IdDireccion SERIAL PRIMARY KEY,
+  Pais VARCHAR(100),
+  Ciudad VARCHAR(100),
+  Zona VARCHAR(100),
+  Direccion TEXT,
+  Referencia TEXT,
+  IdPersona INT,
+  FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+
+CREATE TABLE Usuario (
+  IdUsuario SERIAL PRIMARY KEY,
+  Username VARCHAR(50) NOT NULL,
+  Password TEXT NOT NULL,
+  activo BOOLEAN DEFAULT true,
+  IdPersona INT,
+  FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+CREATE TABLE Rol (
+  IdRol SERIAL PRIMARY KEY,
+  Nombre VARCHAR(50)
+);
+
+CREATE TABLE Permiso (
+  IdPermiso SERIAL PRIMARY KEY,
+  Nombre VARCHAR(50)
+);
+
+CREATE TABLE RolPermiso (
+  IdRolPermiso SERIAL PRIMARY KEY,
+  IdRol INT,
+  IdPermiso INT,
+  FOREIGN KEY (IdRol) REFERENCES Rol(IdRol),
+  FOREIGN KEY (IdPermiso) REFERENCES Permiso(IdPermiso)
+);
+
+CREATE TABLE UsuarioRol (
+  IdUsuarioRol SERIAL PRIMARY KEY,
+  IdUsuario INT,
+  IdRol INT,
+  FechaRegistro TIMESTAMP,
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+  FOREIGN KEY (IdRol) REFERENCES Rol(IdRol)
+);
+
+CREATE TABLE Cliente (
+  IdCliente SERIAL PRIMARY KEY,
+  Saldo NUMERIC(12,2),
+  IdPersona INT,
+  FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+CREATE TABLE Proveedor (
+  IdProveedor SERIAL PRIMARY KEY,
+  Descripcion VARCHAR(150),
+  IdPersona INT,
+  FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+CREATE TABLE Categoria (
+  IdCategoria SERIAL PRIMARY KEY,
+  Nombre VARCHAR(100)
+);
+
+CREATE TABLE Marca (
+  IdMarca SERIAL PRIMARY KEY,
+  Nombre VARCHAR(100)
+);
+
+CREATE TABLE Producto (
+  IdProducto SERIAL PRIMARY KEY,
+  Codigo VARCHAR(50),
+  Nombre VARCHAR(150),
+  Descripcion TEXT,
+  Precio NUMERIC(12,2),
+  IdCategoria INT,
+  IdMarca INT,
+  FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria),
+  FOREIGN KEY (IdMarca) REFERENCES Marca(IdMarca)
+);
+
+CREATE TABLE UnidadMedida (
+  IdUnidad SERIAL PRIMARY KEY,
+  Nombre VARCHAR(50)
+);
+
+CREATE TABLE ProductoUnidad (
+  IdProductoUnidad SERIAL PRIMARY KEY,
+  IdProducto INT,
+  IdUnidad INT,
+  Equivalencia INT,
+  Precio NUMERIC(12,2),
+  FOREIGN KEY (IdProducto) REFERENCES Producto(IdProducto),
+  FOREIGN KEY (IdUnidad) REFERENCES UnidadMedida(IdUnidad)
+);
+
+CREATE TABLE Inventario (
+  IdInventario SERIAL PRIMARY KEY,
+  Stock INT,
+  StockMinimo INT,
+  IdProductoUnidad INT,
+  FOREIGN KEY (IdProductoUnidad) REFERENCES ProductoUnidad(IdProductoUnidad)
+);
+
+CREATE TABLE MovimientoInventario (
+  IdMovimiento SERIAL PRIMARY KEY,
+  Tipo VARCHAR(50),
+  Cantidad INT,
+  Fecha TIMESTAMP,
+  IdProductoUnidad INT,
+  IdUsuario INT,
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+  FOREIGN KEY (IdProductoUnidad) REFERENCES ProductoUnidad(IdProductoUnidad)
+);
+
+CREATE TABLE Venta (
+  IdVenta SERIAL PRIMARY KEY,
+  Fecha TIMESTAMP,
+  Total NUMERIC(12,2),
+  IdCliente INT,
+  IdUsuario INT,
+  FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente),
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+);
+
+CREATE TABLE VentaDetalle (
+  IdDetalle SERIAL PRIMARY KEY,
+  Cantidad INT,
+  Precio NUMERIC(12,2),
+  IdVenta INT,
+  IdProductoUnidad INT,
+  FOREIGN KEY (IdVenta) REFERENCES Venta(IdVenta),
+  FOREIGN KEY (IdProductoUnidad) REFERENCES ProductoUnidad(IdProductoUnidad)
+);
+
+CREATE TABLE Servicio (
+  IdServicio SERIAL PRIMARY KEY,
+  Nombre VARCHAR(100)
+);
+
+CREATE TABLE Pedido (
+  IdPedido SERIAL PRIMARY KEY,
+  Fecha TIMESTAMP,
+  Estado VARCHAR(50),
+  IdUsuario INT,
+  IdCliente INT,
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+  FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente)
+);
+
+CREATE TABLE PedidoDetalle (
+  IdDetalle SERIAL PRIMARY KEY,
+  Tipo VARCHAR(20),
+  Cantidad INT,
+  Precio NUMERIC(12,2),
+  IdPedido INT,
+  IdProductoUnidad INT,
+  IdServicio INT,
+  FOREIGN KEY (IdPedido) REFERENCES Pedido(IdPedido),
+  FOREIGN KEY (IdProductoUnidad) REFERENCES ProductoUnidad(IdProductoUnidad),
+  FOREIGN KEY (IdServicio) REFERENCES Servicio(IdServicio)
+);
+
+CREATE TABLE PedidoDetallePersonalizado (
+  IdPersonalizado SERIAL PRIMARY KEY,
+  IdDetalle INT,
+  TipoTrabajo VARCHAR(50),
+  ColorTapaFrontal VARCHAR(50),
+  ColorTapaPosterior VARCHAR(50),
+  CantidadHojas INT,
+  Tamano VARCHAR(50),
+  Observacion TEXT,
+  FOREIGN KEY (IdDetalle) REFERENCES PedidoDetalle(IdDetalle)
+);
+
+CREATE TABLE TipoCambio (
+  IdTipoCambio SERIAL PRIMARY KEY,
+  Valor NUMERIC(12,4),
+  Fecha TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE Reporte (
+  IdReporte SERIAL PRIMARY KEY,
+  Tipo VARCHAR(50),
+  FechaInicio TIMESTAMP,
+  FechaFin TIMESTAMP,
+  FechaGenerado TIMESTAMP,
+  IdUsuario INT,
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+);
+
+CREATE TABLE NotificacionVenta (
+  IdNotificacion SERIAL PRIMARY KEY,
+  IdVenta INT,
+  IdPedido INT,
+  Medio VARCHAR(50),
+  Estado VARCHAR(50),
+  FechaEnvio TIMESTAMP,
+  FechaCreacion TIMESTAMP,
+  IdCliente INT,
+  IdUsuario INT,
+  FOREIGN KEY (IdVenta) REFERENCES Venta(IdVenta),
+  FOREIGN KEY (IdPedido) REFERENCES Pedido(IdPedido),
+  FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente),
+  FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+);
