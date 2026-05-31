@@ -8,16 +8,16 @@ Este directorio contiene todos los estilos globales y consolidados del proyecto.
 
 Archivo principal que contiene:
 
-#### Variables de Color (Paleta Azul Celeste)
-- `--color-primary-dark`: #0369a1 (Azul oscuro)
-- `--color-primary-light`: #0ea5e9 (Azul celeste)
-- `--color-white`: #ffffff
-- `--color-gray-light`: #f0f6ff (Fondo claro)
-- `--color-gray-medium`: #cbd5e1
-- `--color-gray-text`: #64748b
-- `--color-gray-dark`: #0f172a (Texto oscuro)
-- `--color-error`: #dc3c3c (Rojo error)
-- `--color-error-light`: #e87c7c (Rojo error claro)
+#### Colores Directos (Paleta Azul Celeste)
+- **#0369a1** - Azul oscuro (botones, textos destacados)
+- **#0ea5e9** - Azul celeste (hover, acentos)
+- **#ffffff** - Blanco (fondos principales)
+- **#f0f6ff** - Gris muy claro (fondo secundario)
+- **#cbd5e1** - Gris medio (bordes)
+- **#64748b** - Gris de texto (texto secundario)
+- **#0f172a** - Gris oscuro (texto principal)
+- **#dc3c3c** - Rojo error
+- **#e87c7c** - Rojo error claro
 
 #### Componentes Consolidados
 
@@ -76,10 +76,11 @@ El proyecto ahora utiliza una **paleta azul celeste y blanco** consistente:
 
 ## Uso
 
-Todas las vistas Vue importan automáticamente `globals.css`:
+Todas las vistas Vue importan `globals.css` junto con sus respectivas fuentes de Google:
 
 ```vue
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import '@/style/globals.css';
 </style>
 
@@ -87,6 +88,8 @@ Todas las vistas Vue importan automáticamente `globals.css`:
 /* Estilos específicos de la vista */
 </style>
 ```
+
+**Nota:** Cada vista mantiene su propio `@import url()` de Google Fonts. Los colores usan valores directos (hex), sin variables CSS.
 
 ## Ventajas
 

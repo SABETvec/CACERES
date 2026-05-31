@@ -479,6 +479,7 @@ const FormatearFecha = (FechaISO) => {
 onMounted(CargarClientes)
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 @import '@/style/globals.css';
 </style>
 <style scoped>

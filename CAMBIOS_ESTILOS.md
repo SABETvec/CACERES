@@ -10,16 +10,16 @@ Se ha realizado una consolidación completa del sistema de estilos del proyecto,
 - `web/src/style/` - Nuevo directorio para estilos globales
 
 ### Archivos Creados
-1. **`web/src/style/globals.css`** (818 líneas)
-   - Variables CSS con paleta de colores azul celeste
+1. **`web/src/style/globals.css`** (792 líneas)
+   - Colores directos (hex) con paleta azul celeste
    - Componentes consolidados: botones, tablas, modales, formularios
-   - Estilos base reutilizables
-   - Documentación inline
+   - Estilos base reutilizables sin variables CSS
+   - Google Fonts importadas dentro del archivo
 
 2. **`web/src/style/README.md`**
    - Documentación del sistema de estilos
-   - Descripción de variables y componentes
-   - Guía de uso
+   - Descripción de colores y componentes
+   - Guía de uso e importación en vistas
 
 ## Cambios en las Vistas
 
@@ -54,14 +54,17 @@ Se ha realizado una consolidación completa del sistema de estilos del proyecto,
 
 ## Paleta de Colores Unificada
 
-### Colores Principales
+### Colores Directos (Sin Variables CSS)
 ```
---color-primary-dark:   #0369a1 (Azul oscuro)
---color-primary-light:  #0ea5e9 (Azul celeste)
---color-white:          #ffffff (Blanco)
---color-gray-light:     #f0f6ff (Fondo claro)
---color-gray-text:      #64748b (Texto gris)
---color-gray-dark:      #0f172a (Texto oscuro)
+#0369a1 - Azul oscuro (botones, textos destacados)
+#0ea5e9 - Azul celeste (hover, acentos)
+#ffffff - Blanco (fondos principales)
+#f0f6ff - Gris muy claro (fondo secundario)
+#cbd5e1 - Gris medio (bordes)
+#64748b - Gris de texto (texto secundario)
+#0f172a - Gris oscuro (texto principal)
+#dc3c3c - Rojo error
+#e87c7c - Rojo error claro
 ```
 
 ### Cambios Realizados
@@ -146,7 +149,8 @@ Se identificaron y consolidaron estilos que se repetían en múltiples vistas:
 
 ## Notas Técnicas
 
+- Cada vista tiene su propio `@import url()` de Google Fonts (conservado como en el original)
+- El archivo `globals.css` proporciona la base reutilizable con colores directos (hex)
 - Las vistas mantienen sus `<style scoped>` para estilos específicos
-- El archivo `globals.css` proporciona la base reutilizable
-- Se utilizan variables CSS (custom properties) para facilitar cambios futuros
+- NO se utilizan variables CSS (custom properties), solo colores hex directos
 - La estructura permite agregar más temas sin duplicar código
